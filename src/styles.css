@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=League+Spartan:wght@600;700;800&display=swap');
+
+:root { font-family: "DM Sans", sans-serif; color: #172033; background: #f3f5f8; font-synthesis: none; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background: #f3f5f8; }
+button, input { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+.skip-link { position: fixed; top: -4rem; left: 1rem; z-index: 1000; padding: .75rem 1rem; color: #172033; background: #fff; border-radius: .4rem; }
+.skip-link:focus { top: 1rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.site-header { background: #fff; border-bottom: 1px solid #e0e4ea; box-shadow: 0 2px 10px #1720330a; }
+.header-inner { width: min(1160px, calc(100% - 2rem)); min-height: 78px; margin: auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1.25rem; }
+.back-link { justify-self: start; display: inline-flex; align-items: center; gap: .45rem; color: #596579; text-decoration: none; font-weight: 600; font-size: .9rem; }
+.brand { display: inline-flex; align-items: center; gap: .65rem; color: #172033; text-decoration: none; line-height: .82; }
+.brand-mark { display: grid; place-items: center; width: 42px; height: 42px; color: #fff; background: #d92332; border-radius: 50%; }
+.brand strong { display: block; font: 800 1.05rem "League Spartan"; letter-spacing: .08em; }
+.brand small { display: block; margin-top: .28rem; font-size: .53rem; letter-spacing: .13em; }
+.header-inner > h1 { justify-self: end; margin: 0; font: 700 1.35rem "League Spartan"; }
+main { min-height: 80vh; }
+.page-intro { padding: 4.3rem 1rem 2.2rem; text-align: center; }
+.eyebrow { margin: 0 0 .8rem; color: #d92332; font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.page-intro h2 { margin: 0; font: 800 clamp(2.7rem, 6vw, 4.5rem)/.95 "League Spartan"; letter-spacing: -.04em; text-transform: uppercase; }
+.page-intro > p:last-child { margin: 1rem 0 0; color: #697488; font-size: 1.08rem; }
+.locator-shell { width: min(980px, calc(100% - 2rem)); margin: 0 auto 6rem; }
+.search-card, .map-card, .browse-card { margin-bottom: 1.6rem; overflow: hidden; background: #fff; border: 1px solid #e0e4ea; border-radius: .75rem; box-shadow: 0 14px 38px #1d2a3e0c; }
+.search-card-title { display: flex; align-items: center; gap: .75rem; padding: 1rem 1.4rem; color: #fff; background: linear-gradient(100deg, #d92332, #b71926); }
+.search-card-title span { display: grid; place-items: center; width: 36px; height: 36px; background: #ffffff2b; border-radius: 50%; }
+.search-card-title h2, .card-heading h2 { margin: 0; font: 700 1.2rem "League Spartan"; }
+.search-card form { display: grid; grid-template-columns: 1fr auto; gap: .75rem; padding: 1.5rem 1.5rem 1rem; }
+.search-card input { min-width: 0; height: 46px; padding: 0 .95rem; color: #172033; background: #fff; border: 1px solid #cfd5de; border-radius: .4rem; outline: none; }
+.search-card input:focus { border-color: #377fa6; box-shadow: 0 0 0 3px #377fa622; }
+.search-button, .location-action button { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; border: 0; color: #fff; font-weight: 700; transition: transform .18s ease, background .18s ease; }
+.search-button { padding: 0 1.25rem; background: #d92332; border-radius: .4rem; }
+.search-button:hover { background: #bd1c29; }
+.location-action { padding: .25rem 1.5rem .9rem; text-align: center; }
+.location-action button { padding: .72rem 1.15rem; background: #276c95; border-radius: 999px; }
+.location-action button:hover { background: #1f5b7f; }
+.search-button:active, .location-action button:active { transform: translateY(1px); }
+.status { min-height: 1rem; margin: 0; padding: 0 1.5rem 1.1rem; color: #667287; text-align: center; font-size: .82rem; }
+.card-heading { padding: 1.2rem 1.4rem; border-bottom: 1px solid #e7eaf0; }
+.map-frame { margin: 1.35rem 1.35rem .85rem; overflow: hidden; border-radius: .55rem; }
+.leaflet-container { width: 100%; height: 540px; background: #dfe7eb; font-family: "DM Sans", sans-serif; }
+.leaflet-popup-content { line-height: 1.45; }
+.popup-button { margin-top: .6rem; padding: .4rem .6rem; color: #fff; background: #276c95; border: 0; border-radius: .25rem; font-size: .76rem; font-weight: 700; }
+.map-legend { display: flex; flex-wrap: wrap; gap: 1.25rem; padding: .25rem 1.4rem 1.35rem; color: #667287; font-size: .8rem; }
+.map-legend span { display: inline-flex; align-items: center; gap: .45rem; }
+.map-legend i { width: 10px; height: 10px; border-radius: 50%; box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ccd3dd; }
+.red-dot { background: #d92332; } .blue-dot { background: #2468a2; } .green-dot { background: #239357; }
+.state-filters { display: flex; flex-wrap: wrap; gap: .55rem; padding: 1.35rem; }
+.state-filters button { display: inline-flex; gap: .4rem; padding: .48rem .78rem; color: #344054; background: #eef1f5; border: 1px solid transparent; border-radius: 999px; font-size: .82rem; font-weight: 700; transition: .18s ease; }
+.state-filters button span { color: #7b8494; font-variant-numeric: tabular-nums; }
+.state-filters button:hover { background: #e1e6ec; }
+.state-filters button.active { color: #fff; background: #d92332; }
+.state-filters button.active span { color: #fff; }
+.state-store-index { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 0 1.35rem 1.35rem; padding-top: 1rem; border-top: 1px solid #dfe4eb; }
+.state-store-index button { min-width: 0; padding: .5rem .65rem; text-align: left; background: transparent; border: 0; border-left: 2px solid transparent; transition: background .18s ease, border-color .18s ease; }
+.state-store-index button:hover { background: #f5f7fa; border-left-color: #d92332; }
+.state-store-index strong, .state-store-index small { display: block; }
+.state-store-index strong { overflow: hidden; color: #283448; font-size: .72rem; line-height: 1.25; text-overflow: ellipsis; }
+.state-store-index small { margin-top: .3rem; color: #68768a; font-size: .68rem; }
+.results-section { margin-top: 2.5rem; }
+.results-section > h2 { margin: 0 0 1rem; font: 700 1.55rem "League Spartan"; }
+.result-list { display: grid; gap: .8rem; }
+.result-card { padding: 1.3rem 1.4rem; background: #fff; border: 1px solid #e0e4ea; border-radius: .6rem; }
+.result-main { display: flex; justify-content: space-between; gap: 1.25rem; }
+.result-card p { margin: 0 0 .3rem; color: #d92332; font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.result-card h3 { margin: 0 0 .55rem; font: 700 1.25rem "League Spartan"; }
+.result-address { display: flex; align-items: flex-start; gap: .4rem; color: #596579; text-decoration: none; font-size: .86rem; }
+.result-address svg { flex: 0 0 auto; color: #d92332; }
+.result-phone { display: inline-block; margin: .55rem 0 0 1.4rem; color: #3d526a; font-size: .84rem; }
+.result-distance { align-self: flex-start; color: #526074; font-size: .78rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.result-hours { margin-top: 1.1rem; padding: 1rem 0; border-top: 1px solid #e7eaf0; border-bottom: 1px solid #e7eaf0; }
+.result-hours h4 { margin: 0 0 .55rem; color: #374459; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+.result-actions { display: flex; align-items: center; gap: .65rem; margin-top: 1rem; }
+.result-actions a, .result-actions button, .empty-state button { display: inline-flex; align-items: center; gap: .4rem; padding: .6rem .85rem; border-radius: .35rem; font-size: .82rem; font-weight: 700; }
+.result-actions a { color: #fff; background: #276c95; text-decoration: none; }
+.result-actions button { color: #344054; background: #fff; border: 1px solid #cbd2dc; }
+.empty-state { padding: 2rem; text-align: center; background: #fff; border: 1px solid #e0e4ea; border-radius: .6rem; }
+.modal-backdrop { position: fixed; inset: 0; z-index: 500; display: grid; place-items: center; padding: 1rem; background: #101725b8; backdrop-filter: blur(3px); }
+.store-modal { position: relative; width: min(560px, 100%); max-height: 90vh; overflow-y: auto; padding: 2rem; background: #fff; border-radius: .7rem; box-shadow: 0 24px 70px #0d14234d; }
+.modal-close { position: absolute; top: 1rem; right: 1rem; display: grid; place-items: center; width: 36px; height: 36px; color: #586477; background: #f0f2f5; border: 0; border-radius: 50%; }
+.store-kind { margin: 0 0 .5rem; color: #d92332; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.store-modal h2 { max-width: 85%; margin: 0 0 1.2rem; font: 800 2rem/1 "League Spartan"; text-transform: uppercase; }
+.detail-address { display: flex; align-items: start; gap: .6rem; color: #596579; }
+.detail-address svg { flex: 0 0 auto; color: #d92332; }
+.detail-phone { display: inline-block; margin: .7rem 0 0 1.65rem; color: #3f5168; }
+.modal-hours { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid #e3e7ec; }
+.modal-hours h3 { margin: 0 0 .7rem; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+.hours-widget { min-height: 1.5rem; }
+.hours-group h5 { margin: 0 0 .45rem; color: #4f5d72; font-size: .72rem; text-transform: uppercase; }
+.hours-group dl { margin: 0; }
+.hours-group dl > div { display: grid; grid-template-columns: minmax(78px, .6fr) 1.4fr; gap: .8rem; padding: .24rem 0; font-size: .79rem; line-height: 1.35; }
+.hours-group dt { color: #647187; }
+.hours-group dd { margin: 0; color: #28364a; font-weight: 600; font-variant-numeric: tabular-nums; }
+.exception-hours { margin-top: .7rem; padding-top: .6rem; border-top: 1px dashed #dbe1e8; }
+.hours-error, .temporarily-closed { margin: .25rem 0; color: #7b5360; font-size: .8rem; }
+.hours-loading { display: grid; gap: .4rem; width: min(250px, 100%); }
+.hours-loading span { display: block; height: 9px; background: linear-gradient(90deg, #edf0f4 20%, #f7f8fa 50%, #edf0f4 80%); background-size: 200% 100%; border-radius: 999px; animation: hours-shimmer 1.2s linear infinite; }
+.hours-loading span:nth-child(2) { width: 82%; }
+.hours-loading span:nth-child(3) { width: 68%; }
+@keyframes hours-shimmer { to { background-position: -200% 0; } }
+.modal-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.6rem; }
+.action { display: inline-flex; align-items: center; gap: .4rem; padding: .7rem .9rem; border-radius: .35rem; text-decoration: none; font-size: .84rem; font-weight: 700; }
+.action.primary { color: #fff; background: #276c95; }
+.action.secondary { color: #344054; border: 1px solid #ccd3dd; }
+footer { display: flex; justify-content: space-between; gap: 1rem; padding: 2rem max(1rem, calc((100% - 980px) / 2)); color: #c2cad7; background: #172033; font-size: .82rem; }
+footer p { margin: 0; } footer a { color: #fff; }
+:focus-visible { outline: 3px solid #48a7c3; outline-offset: 3px; }
+@media (max-width: 700px) {
+  .header-inner { grid-template-columns: auto 1fr; }
+  .brand { justify-self: center; }
+  .header-inner > h1 { display: none; }
+  .brand small { display: none; }
+  .page-intro { padding-top: 3.2rem; }
+  .search-card form { grid-template-columns: 1fr; }
+  .search-button { min-height: 44px; }
+  .map-frame { margin: 1rem; }
+  .leaflet-container { height: 420px; }
+  .state-store-index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .result-main { flex-direction: column; }
+}
+@media (max-width: 450px) {
+  .header-inner { width: calc(100% - 1.25rem); }
+  .back-link span { display: none; }
+  .locator-shell { width: min(100% - 1rem, 980px); }
+  .leaflet-container { height: 350px; }
+  .state-store-index { grid-template-columns: 1fr; }
+  footer { flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *:before, *:after { transition-duration: .01ms !important; } }
+
+/* Store management */
+.management-page { width: min(1220px, calc(100% - 2rem)); margin: 0 auto; padding: 2.2rem 0 5rem; }
+.management-header { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-bottom: 2rem; }
+.management-back { display: inline-flex; align-items: center; gap: .4rem; margin-bottom: 1rem; color: #68758a; text-decoration: none; font-size: .82rem; font-weight: 600; }
+.management-header h1 { margin: 0; font: 800 2.4rem/.95 "League Spartan"; letter-spacing: -.035em; }
+.management-header p { margin: .45rem 0 0; color: #69758a; }
+.add-store-button, .table-title button { display: inline-flex; align-items: center; gap: .5rem; border: 0; color: #fff; background: #df3a42; border-radius: .55rem; font-weight: 700; transition: .18s ease; }
+.add-store-button { padding: .85rem 1.25rem; }
+.add-store-button:hover, .table-title button:hover { background: #c92731; transform: translateY(-1px); }
+.management-account { display: flex; align-items: center; gap: .65rem; }
+.management-account > span { text-align: right; }
+.management-account strong, .management-account small { display: block; }
+.management-account strong { max-width: 220px; overflow: hidden; font-size: .78rem; text-overflow: ellipsis; }
+.management-account small { margin-top: .2rem; color: #d3343d; font-size: .68rem; font-weight: 700; text-transform: uppercase; }
+.management-account > button:not(.add-store-button) { display: grid; place-items: center; width: 38px; height: 38px; color: #59677c; background: #fff; border: 1px solid #d7dfe8; border-radius: .45rem; }
+.management-tabs { display: flex; align-items: center; gap: .15rem; width: fit-content; max-width: 100%; overflow-x: auto; margin-bottom: .75rem; padding: .3rem; background: #eaf0f6; border-radius: .7rem; }
+.management-tabs button { flex: 0 0 auto; padding: .6rem .85rem; color: #51627b; background: transparent; border: 0; border-radius: .5rem; font-size: .88rem; }
+.management-tabs button.active { color: #172033; background: #fff; box-shadow: 0 2px 7px #17203314; font-weight: 700; }
+.management-message { display: flex; align-items: center; gap: .5rem; width: fit-content; margin: 0 0 .8rem; padding: .65rem .8rem; color: #236b46; background: #eaf7ef; border-radius: .4rem; font-size: .86rem; font-weight: 600; }
+.store-table-card, .store-form { background: #fff; border: 1px solid #d9e1eb; border-radius: .75rem; }
+.table-title, .form-title { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.5rem; border-bottom: 1px solid #e4e9ef; }
+.table-title h2, .form-title h2 { margin: 0; font: 700 1.65rem "League Spartan"; }
+.table-title p { margin: .35rem 0 0; color: #6c788b; font-size: .87rem; }
+.table-title button { padding: .65rem .9rem; }
+.store-table-wrap { overflow-x: auto; }
+.store-table-card table { width: 100%; border-collapse: collapse; }
+.store-table-card th { padding: .85rem 1.2rem; color: #68758a; background: #f8fafc; text-align: left; font-size: .72rem; letter-spacing: .07em; text-transform: uppercase; }
+.store-table-card td { padding: 1rem 1.2rem; border-top: 1px solid #e8ecf1; vertical-align: middle; font-size: .84rem; }
+.store-table-card td:first-child { min-width: 280px; }
+.store-table-card td strong, .store-table-card td > span { display: block; }
+.store-table-card td:first-child span { display: flex; align-items: center; gap: .35rem; margin-top: .3rem; color: #6b778a; font-size: .76rem; }
+.type-label { width: fit-content; padding: .28rem .48rem; color: #536179; background: #eef2f6; border-radius: .3rem; text-transform: capitalize; }
+.connected { display: inline-flex !important; align-items: center; gap: .3rem; color: #23714a; font-weight: 600; }
+.not-connected { color: #8a6570; }
+.status-active, .status-inactive { width: fit-content; padding: .28rem .5rem; border-radius: 999px; font-size: .72rem; font-weight: 700; }
+.status-active { color: #fff; background: #df3039; }
+.status-inactive { color: #68758a; background: #e8edf2; }
+.row-actions { display: flex; justify-content: end; gap: .4rem; }
+.row-actions button { display: inline-flex; align-items: center; gap: .35rem; min-width: 34px; height: 34px; justify-content: center; color: #59677c; background: #fff; border: 1px solid #d8dfe8; border-radius: .4rem; }
+.row-actions button:hover { color: #172033; background: #f4f6f9; }
+.row-actions .toggle-status { width: auto; padding: 0 .72rem; }
+.row-actions .confirm-delete { width: auto; padding: 0 .65rem; color: #fff; background: #c92c36; border-color: #c92c36; }
+.management-placeholder { padding: 5rem 1rem; text-align: center; background: #fff; border: 1px solid #d9e1eb; border-radius: .75rem; }
+.management-placeholder svg { color: #d3343d; }
+.management-placeholder h2 { margin: .8rem 0 .45rem; font: 700 1.7rem "League Spartan"; }
+.management-placeholder p { margin: 0; color: #6b778a; }
+.role-card { background: #fff; border: 1px solid #d9e1eb; border-radius: .75rem; }
+.role-error { margin: 1rem; padding: .75rem; color: #9c2630; background: #fff0f1; border-radius: .4rem; font-size: .84rem; }
+.role-loading { padding: 2rem; color: #6b778a; }
+.role-list { padding: 0 1.4rem; }
+.role-list-head, .role-row { display: grid; grid-template-columns: minmax(0, 1fr) 190px; align-items: center; gap: 1rem; }
+.role-list-head { padding: .8rem 0; color: #748094; border-bottom: 1px solid #e4e9ef; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.role-row { padding: 1rem 0; border-bottom: 1px solid #e8ecf1; }
+.role-row strong, .role-row small { display: block; }
+.role-row strong { overflow: hidden; font-size: .86rem; text-overflow: ellipsis; }
+.role-row small { margin-top: .25rem; color: #d3343d; font-size: .68rem; }
+.role-row select { width: 100%; height: 39px; padding: 0 .65rem; background: #fff; border: 1px solid #d5dde7; border-radius: .45rem; }
+.role-key { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.4rem; padding: 1rem; background: #f7f9fb; border-radius: .55rem; }
+.role-key strong, .role-key span { display: block; }
+.role-key strong { margin-bottom: .3rem; font-size: .78rem; }
+.role-key span { color: #6b778a; font-size: .72rem; line-height: 1.45; }
+.store-form { padding: 0 1.55rem 1.65rem; }
+.form-title { margin: 0 -1.55rem 1.6rem; }
+.form-title button { display: grid; place-items: center; width: 42px; height: 42px; color: #172033; background: #fff; border: 1px solid #d7dfe8; border-radius: .55rem; }
+.form-grid { display: grid; gap: 1rem; }
+.form-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.form-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.form-grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.management-field { display: block; margin-bottom: 1.3rem; }
+.management-field > span { display: block; margin-bottom: .5rem; color: #1f2939; font-size: .84rem; font-weight: 650; }
+.management-field input, .management-field select, .management-field textarea { width: 100%; min-width: 0; padding: .75rem .8rem; color: #172033; background: #fff; border: 1px solid #d5dde7; border-radius: .55rem; outline: none; }
+.management-field input, .management-field select { height: 43px; }
+.management-field textarea { resize: vertical; line-height: 1.5; }
+.management-field input:focus, .management-field select:focus, .management-field textarea:focus { border-color: #4e8daa; box-shadow: 0 0 0 3px #4e8daa1f; }
+.management-field small { display: block; margin-top: .4rem; color: #64748b; font-size: .73rem; }
+.management-field .field-error { color: #c52e38; }
+.management-field.has-error input, .management-field.has-error select { border-color: #d43b44; }
+.display-settings { display: grid; gap: .85rem; margin: .2rem 0 1.5rem; padding: 1.2rem; background: #f9fbfd; border: 1px solid #dbe3ec; border-radius: .7rem; }
+.display-settings legend { padding: 0 .25rem; font-size: .84rem; font-weight: 700; }
+.display-settings label { display: flex; align-items: center; gap: .6rem; width: fit-content; font-size: .86rem; cursor: pointer; }
+.display-settings input { position: absolute; opacity: 0; pointer-events: none; }
+.display-settings label span { display: grid; place-items: center; width: 17px; height: 17px; color: transparent; background: #fff; border: 1px solid #b9c3cf; border-radius: 50%; }
+.display-settings input:checked + span { color: #fff; background: #df3039; border-color: #df3039; }
+.display-settings input:focus-visible + span { outline: 3px solid #48a7c3; outline-offset: 2px; }
+.form-actions { display: flex; gap: .7rem; }
+.form-actions button { display: inline-flex; align-items: center; gap: .5rem; padding: .72rem 1.05rem; border-radius: .55rem; font-weight: 700; }
+.save-store { color: #fff; background: #dc2933; border: 1px solid #dc2933; }
+.save-store:hover { background: #c31f29; }
+.cancel-form { color: #172033; background: #fff; border: 1px solid #d4dce6; }
+@media (max-width: 850px) {
+  .form-grid.four, .form-grid.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .management-header { align-items: flex-end; }
+}
+@media (max-width: 580px) {
+  .management-page { width: min(100% - 1rem, 1220px); padding-top: 1.2rem; }
+  .management-header { align-items: flex-start; flex-direction: column; gap: 1rem; }
+  .management-header h1 { font-size: 2rem; }
+  .add-store-button { width: 100%; justify-content: center; }
+  .management-account { width: 100%; flex-wrap: wrap; }
+  .management-account > span { flex: 1; text-align: left; }
+  .management-account .add-store-button { order: 3; }
+  .form-grid.two, .form-grid.three, .form-grid.four { grid-template-columns: 1fr; }
+  .store-form { padding-inline: 1rem; }
+  .form-title { margin-inline: -1rem; }
+  .table-title { align-items: flex-start; flex-direction: column; }
+  .role-list-head, .role-row { grid-template-columns: 1fr; }
+  .role-list-head { display: none; }
+  .role-key { grid-template-columns: 1fr; }
+}
+
+.cms-gate { min-height: 100dvh; display: grid; place-items: center; padding: 1rem; background: radial-gradient(circle at 50% 0, #e8f2f5, #f3f5f8 42%); }
+.cms-gate-card, .cms-login { width: min(430px, 100%); padding: 2.2rem; background: #fff; border: 1px solid #d9e1eb; border-radius: .8rem; box-shadow: 0 22px 65px #17203312; text-align: center; }
+.cms-gate-card > svg { color: #d3343d; }
+.cms-gate-card h1, .cms-login h1 { margin: .8rem 0 .5rem; font: 800 2rem/.95 "League Spartan"; }
+.cms-gate-card p, .cms-login > span { color: #69758a; line-height: 1.55; }
+.cms-gate-card code { display: block; margin: 1rem 0; padding: .8rem; color: #4b5d74; background: #f3f6f9; border-radius: .4rem; text-align: left; font-size: .75rem; }
+.cms-gate-card a, .cms-login > a { display: inline-block; margin-top: 1rem; color: #52647c; font-size: .82rem; }
+.cms-gate-card button { display: inline-flex; align-items: center; gap: .45rem; margin-top: 1rem; padding: .7rem 1rem; color: #fff; background: #172033; border: 0; border-radius: .45rem; }
+.cms-login { text-align: left; }
+.cms-login-mark { display: grid; place-items: center; width: 46px; height: 46px; color: #fff; background: #d3343d; border-radius: 50%; }
+.cms-login > p { margin: 1rem 0 .3rem; color: #d3343d; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.cms-login > span { display: block; margin-bottom: 1.5rem; }
+.cms-login label { display: block; margin-top: 1rem; color: #2d394c; font-size: .8rem; font-weight: 700; }
+.cms-login input { width: 100%; height: 44px; margin-top: .45rem; padding: 0 .75rem; border: 1px solid #d4dce6; border-radius: .45rem; outline: none; }
+.cms-login input:focus { border-color: #4e8daa; box-shadow: 0 0 0 3px #4e8daa1f; }
+.cms-login-error { margin-top: 1rem; padding: .7rem; color: #a12933; background: #fff0f1; border-radius: .4rem; font-size: .8rem; }
+.cms-login > button { width: 100%; min-height: 44px; margin-top: 1.2rem; color: #fff; background: #d3343d; border: 0; border-radius: .45rem; font-weight: 700; }
+.cms-login > button:disabled { opacity: .65; cursor: wait; }
